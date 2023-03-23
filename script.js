@@ -16,9 +16,13 @@ var ele = document.getElementById('timer');
 function startTimer(){
   var sec = 0
   timer = setInterval(()=>{
-    ele.innerHTML = 59+sec;
+    ele.innerHTML = 10+sec;
     sec --
   },1000)
+
+  if (ele.innerHTML < 1) {
+  resetState()
+  }
 }
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
