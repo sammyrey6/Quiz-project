@@ -5,24 +5,21 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 
 let shuffledQuestions, currentQuestionIndex
-//timer function
-const startingMinutes = 5;
-let time =startingMinutes * 60;
 
-const countdownEl = document.getElementById('countdown');
-
-setInterval(updateCountdown, 1000);
-
-function updateCountdown(){
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-
-    countdownEl.innerHtml= `${minutes} : ${seconds}`
-    time--;
-
-}
 
 startButton.addEventListener('click', startGame)
+//timer function
+startButton.addEventListener('click', startTimer)
+var timer
+var ele = document.getElementById('timer');
+
+function startTimer(){
+  var sec = 0
+  timer = setInterval(()=>{
+    ele.innerHTML = 59+sec;
+    sec --
+  },1000)
+}
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
@@ -126,3 +123,4 @@ const questions = [
     ]
   }
 ]
+
