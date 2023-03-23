@@ -10,19 +10,26 @@ let shuffledQuestions, currentQuestionIndex
 startButton.addEventListener('click', startGame)
 //timer function
 startButton.addEventListener('click', startTimer)
-var timer
+var interval
 var ele = document.getElementById('timer');
 
 function startTimer(){
-  var sec = 0
-  timer = setInterval(()=>{
-    ele.innerHTML = 10+sec;
+  var sec = 30
+  interval = setInterval(()=>{
+    ele.innerHTML =  sec
     sec --
+    if (sec === 0) {
+      stopTimer()
+    };
   },1000)
+}
+  
 
-  if (ele.innerHTML < 1) {
-  resetState()
-  }
+function stopTimer(){
+  stop() 
+    clearInterval(interval);
+
+    interval = null
 }
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
